@@ -55,52 +55,56 @@ const EventCard: React.FC<EventCardProps> = ({
   location,
 }) => {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 flex flex-col sm:flex-row transition-transform hover:-translate-y-1 duration-300 h-full">
-      <div className="bg-[#161f36] text-white sm:w-32 flex flex-row sm:flex-col justify-center items-center py-4 sm:py-8 px-6 sm:px-0 shrink-0">
-        <span className="text-[#eab308] text-sm font-bold tracking-wider mr-4 sm:mr-0">
-          {month}
+    <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col transition-all hover:-translate-y-2 hover:shadow-2xl duration-300 h-full group">
+      {/* Date Header */}
+      <div className="bg-gradient-to-br from-[#161f36] to-[#253252] text-white flex justify-between items-center py-5 px-6 shrink-0 relative overflow-hidden">
+        {/* Decorative circle for depth */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-32 h-32 pointer-events-none " />
+        
+        <div className="flex items-baseline space-x-2 relative z-10">
+          <span className="text-[#eab308] text-base font-bold tracking-wider uppercase">
+            {month}
+          </span>
+          <span className="text-4xl font-extrabold tracking-tight">
+            {day}
+          </span>
+          <span className="text-gray-300 text-sm font-medium">{year}</span>
+        </div>
+        
+        <span className="bg-white/10 border border-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full relative z-10 shadow-sm">
+          {type}
         </span>
-        <span className="text-4xl font-extrabold my-0 sm:my-1 mr-4 sm:mr-0">
-          {day}
-        </span>
-        <span className="text-gray-400 text-sm">{year}</span>
       </div>
 
-      <div className="p-6 sm:p-8 flex flex-col flex-grow relative bg-white">
-        <div className="flex justify-between items-start w-full mb-4">
-          <span className="bg-[#fee2e2] text-[#d60000] text-xs font-semibold px-4 py-1.5 rounded-full">
-            {type}
-          </span>
-          <div className="w-2.5 h-2.5 bg-[#d60000] rounded-full mt-2" />
-        </div>
-
-        <div className="flex-grow mb-8">
-          <h3 className="font-bold text-[#111827] text-xl mb-3 leading-tight">
+      <div className="p-6 md:p-8 flex flex-col flex-grow relative bg-white">
+        <div className="flex-grow mb-6">
+          <h3 className="font-bold text-[#111827] text-2xl mb-3 leading-tight group-hover:text-[#d60000] transition-colors">
             {title}
           </h3>
-          <p className="text-gray-500 text-[15px] leading-relaxed">
+          <p className="text-gray-600 text-base leading-relaxed line-clamp-3">
             {description}
           </p>
         </div>
 
-        <hr className="border-gray-200 mb-5" />
+        <div className="mt-auto">
+          <hr className="border-gray-100 mb-5" />
+          <div className="flex flex-row justify-between items-center w-full gap-4">
+            <div className="flex items-center text-gray-600 text-sm font-medium space-x-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 flex-1 min-w-0">
+              <MapPin size={18} className="text-[#d60000] shrink-0" />
+              <span className="truncate">{location}</span>
+            </div>
 
-        <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center w-full gap-4 xl:gap-0 mt-auto">
-          <div className="flex items-center text-gray-500 text-xs font-medium space-x-2">
-            <MapPin size={16} className="text-[#d60000]" />
-            <span className="text-gray-500">{location}</span>
+            <Link
+              href="#"
+              className="flex items-center justify-center bg-[#fee2e2] hover:bg-[#d60000] text-[#d60000] hover:text-white shrink-0 w-10 h-10 rounded-full transition-colors shadow-sm"
+              title="Register Now"
+            >
+              <ArrowRight
+                size={18}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </Link>
           </div>
-
-          <Link
-            href="#"
-            className="flex items-center space-x-1.5 text-[#111827] font-bold text-sm hover:text-[#d60000] transition-colors group"
-          >
-            <span>Register Now</span>
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1"
-            />
-          </Link>
         </div>
       </div>
     </div>
@@ -128,16 +132,18 @@ const UpcomingEvents = () => {
           ))}
         </div>
 
-        <Link
-          href="/events"
-          className="inline-flex items-center justify-center space-x-2 bg-transparent border border-[#d60000] text-[#d60000] hover:bg-[#fee2e2] hover:border-[#fee2e2] px-6 py-3.5 rounded-md font-semibold transition-all w-fit group"
-        >
-          <span>View All Events</span>
-          <ArrowRight
-            size={18}
-            className="transition-transform group-hover:translate-x-1"
-          />
-        </Link>
+        <div className="flex justify-center w-full">
+          <Link
+            href="/events"
+            className="inline-flex items-center justify-center space-x-2 bg-transparent border border-[#d60000] text-[#d60000] hover:bg-[#fee2e2] hover:border-[#fee2e2] px-6 py-3.5 rounded-md font-semibold transition-all w-fit group"
+          >
+            <span>View All Events</span>
+            <ArrowRight
+              size={18}
+              className="transition-transform group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
       </section>
     </div>
   );

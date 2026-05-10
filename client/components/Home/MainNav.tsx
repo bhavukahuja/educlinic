@@ -31,22 +31,22 @@ const MainNav = () => {
 
   return (
     <div className="bg-white w-full shadow-sm border-b border-gray-100">
-      <div className="w-full px-6 md:px-12 lg:px-32 xl:px-58 py-3 flex items-center justify-between">
+      <div className="w-full px-6 md:px-12 lg:px-32 xl:px-58 py-2 flex items-center justify-between">
         <div className="flex items-center space-x-6">
           <Image
             src="/logo1.png"
             alt="College Logo"
-            width={220}
-            height={60}
+            width={120}
+            height={40}
             loading="eager"
-            className="w-auto h-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
           <Image
             src="/logo2.jpg"
             alt="NAAC Logo"
-            width={110}
-            height={60}
-            className="w-auto h-auto object-contain hidden md:block"
+            width={120}
+            height={40}
+            className="h-10 w-auto object-contain hidden md:block"
           />
         </div>
 
@@ -60,7 +60,7 @@ const MainNav = () => {
               <Link
                 key={route}
                 href={href}
-                className={`text-sm md:text-base font-semibold py-4 border-b-2 transition-colors ${
+                className={`text-sm md:text-base font-semibold py-2 border-b-2 transition-colors ${
                   isActive
                     ? 'border-[#d60000] text-gray-900'
                     : 'border-transparent text-gray-600 hover:text-[#d60000]'
@@ -75,13 +75,13 @@ const MainNav = () => {
         <div className="flex items-center space-x-4">
           {
             isAuthenticated ? (
-                <button onClick={handleLogout} className="bg-[#d60000] hover:bg-[#b30000] text-white hidden  cursor-pointer px-4 py-3 mt-4 rounded lg:flex items-center justify-center space-x-2 font-medium w-full">
+                <button onClick={handleLogout} className="bg-[#d60000] hover:bg-[#b30000] text-white hidden lg:flex cursor-pointer px-4 py-2 rounded items-center justify-center space-x-2 font-medium">
                   <span>Logout</span>
                   <ArrowRight size={18} />
                 </button>
             ) : (
-              <Link href="/auth">
-                <button className="bg-[#d60000] hover:bg-[#b30000] text-white cursor-pointer px-4 py-3 mt-4 rounded flex items-center justify-center space-x-2 font-medium w-full">
+              <Link href="/auth" className="hidden lg:flex">
+                <button className="bg-[#d60000] hover:bg-[#b30000] text-white cursor-pointer px-4 py-2 rounded flex items-center justify-center space-x-2 font-medium">
                   <span>Login</span>
                   <ArrowRight size={18} />
                 </button>
